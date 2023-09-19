@@ -108,7 +108,7 @@ bool Package::LoadUPK(std::string path)
 
 	//load imports
 	
-	m_nameTable.clear();
+	//m_nameTable.clear();
 
 	return true;
 }

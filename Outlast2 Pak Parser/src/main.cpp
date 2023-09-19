@@ -12,6 +12,7 @@ int main(int argc, char** argv) {
 	const char* file1 = "OLGame.upk";
 	const char* file2 = "VSlice2-04_SE.upk";
 	const char* file3 = "X_Checkpoints.upk";
+	const char* file4 = "X_Checkpoints_OL1.upk";
 
 	const char* path = file3;
 
