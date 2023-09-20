@@ -24,6 +24,9 @@ public:
 
 	void PrintHeader();
 	void PrintExport(int index);
+	void PrintExportOld(int index);
+	int bytecount = 0;
+	int namebytecount = 0;
 
 private:
 

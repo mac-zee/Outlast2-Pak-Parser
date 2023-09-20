@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <string>
 
 class ExportObject
 {
@@ -14,7 +15,7 @@ public:
 	int ObjTypeRef = 0;
 	int ParentClassRef = 0;
 	int OwnerRef = 0;
-	const char* name;
+	std::string name;
 	int NameCount = 0;
 	int Field6 = 0;
 	int ObjectFlagsH = 0;

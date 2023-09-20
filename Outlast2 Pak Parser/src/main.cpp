@@ -33,7 +33,7 @@ int main(int argc, char** argv) {
 
 	pak->SetYoungBlake();
 
-	pak->PrintExport(0);
+	pak->PrintExportOld(0);
 
 	std::cout << "Program by Hydle." << std::endl;
 

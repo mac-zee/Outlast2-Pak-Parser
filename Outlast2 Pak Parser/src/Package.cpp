@@ -108,7 +108,7 @@ bool Package::LoadUPK(std::string path)
 
 	//load imports
 	
-	//m_nameTable.clear();
+	m_nameTable.clear();
 
 	return true;
 }
@@ -225,7 +225,7 @@ bool Package::LoadExports()
 		exportObj.ParentClassRef = *(int*)&(buffer[4]);
 		exportObj.OwnerRef = *(int*)&(buffer[8]);
 		int NameTableIdx = *(int*)&(buffer[12]);
-		exportObj.name = m_nameTable[NameTableIdx].c_str();
+		exportObj.name = m_nameTable[NameTableIdx];
 		exportObj.NameCount = *(int*)&(buffer[16]);
 		exportObj.Field6 = *(int*)&(buffer[20]);
 		exportObj.ObjectFlagsH = *(int*)&(buffer[24]);
@@ -247,7 +247,7 @@ bool Package::LoadExports()
 		}
 
 		offset += ExportObjectSize + (exportObj.NumAdditionalFields * sizeof(int));
-		
+
 		m_exportTable.push_back(exportObj);
 
 		
@@ -303,7 +303,7 @@ bool Package::LoadNames()
 		m_nameTable.push_back(name);
 		
 	}
-	
+
 	file.close();
 	
 	return true;
@@ -321,6 +321,7 @@ bool Package::SetYoungBlake()
 
 		const int bufferSize = m_exportTable[i].ObjectFileSize;
 		char* buffer = (char*)alloca(bufferSize);
+		
 
 		offset = m_exportTable[i].DataOffset;
 		file.seekg(offset);
@@ -344,7 +345,7 @@ bool Package::SetYoungBlake()
 
 			offset += (n + 24);
 
-			char boolBuff[1] = { 0 };
+			const char boolBuff[1] = { 0 };
 
 			file.seekg(offset);
 			file.write(boolBuff, 1);
@@ -359,7 +360,24 @@ bool Package::SetYoungBlake()
 	return true;
 }
 
+
 void Package::PrintExport(int index)
+{
+	if (index > m_exportTable.size()) {
+		std::cout << "Cant print export object. Index out of range!" << std::endl;
+		return;
+	}
+
+	std::cout << "Export #" << index << ":" << std::endl;
+
+
+
+
+
+}
+
+
+void Package::PrintExportOld(int index)
 {
 
 	if (index > m_exportTable.size()) {
